@@ -1,14 +1,4 @@
-<html>
-    <head>
-    	<div id="status"></div>
-
-<!-- Facebook login or logout button -->
- 			<button onclick="fbLogin();">Login Facebook</button>
-<!--		<a href="javascript:void(0);" onclick="fbLogin()" id="fbLink"><img src="fblogin.png"/></a> -->
-
-<!-- Display user profile data -->
-		<div id="userData"></div>
-        <script>
+<script>
 window.fbAsyncInit = function() {
     // FB JavaScript SDK configuration and setup
     FB.init({
@@ -69,6 +59,3 @@ function fbLogout() {
     });
 }
 </script>
-
-    </head>
-</html>
