@@ -80,7 +80,7 @@ function fqlQuery(){
               });
          });
      }
-
+/**
 function getFbUserData2(){
     FB.api('/me', {locale: 'en_US'}, function (response) {
         var query = FB.Data.query('select name,email,hometown_location, sex, pic_square from user where uid={0}', response.id);
@@ -92,7 +92,7 @@ function getFbUserData2(){
                   'Your hometown_location: ' + rows[0].hometown_location + "<br />" +
                   'Your sex: ' + rows[0].sex + "<br />" +
               });
-}
+}*/
 
 // Logout from facebook
 function fbLogout() {
