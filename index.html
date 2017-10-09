@@ -22,19 +22,6 @@ window.fbAsyncInit = function() {
     FB.getLoginStatus(function(response) {
         if (response.status === 'connected') {
             //display user data
-             FB.api('/me', function(response) {
-              var query = FB.Data.query('select name,email,hometown_location, sex, pic_square from user where uid={0}', response.id);
-              query.wait(function(rows) {
-                uid = rows[0].uid;
-                document.getElementById('name').innerHTML =
-                  'Your name: ' + rows[0].name + "<br />" +
-                  'Your email: ' + rows[0].email + "<br />" +
-                  'Your hometown_location: ' + rows[0].hometown_location + "<br />" +
-                  'Your sex: ' + rows[0].sex + "<br />" +
-                  'Your uid: ' + rows[0].uid + "<br />" +
-                  '<img src="' + rows[0].pic_square + '" alt="" />' + "<br />";
-              });
-         });
             getFbUserData();
         }
     });
@@ -53,7 +40,7 @@ window.fbAsyncInit = function() {
 function fbLogin() {
     FB.login(function (response) {
         if (response.authResponse) {
-            document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.first_name + '!';
+            document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.email + '!';
             // Get and display the user profile data
   /**          if (response.status == 'connected') {
     FB.api('/me?fields=first_name', function(data) {
@@ -76,8 +63,8 @@ function fbLogin() {
         document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.first_name + '!';
         document.getElementById('userData').innerHTML = '<p><b>FB ID:</b> '+response.id+'</p><p><b>Name:</b> '+response.first_name+' '+response.last_name+'</p><p><b>Email:</b> '+response.email+'</p><p><b>Gender:</b> '+response.gender+'</p><p><b>Locale:</b> '+response.locale+'</p><p><b>Picture:</b> <img src="'+response.picture.data.url+'"/></p><p><b>FB Profile:</b> <a target="_blank" href="'+response.link+'">click to view profile</a></p>';
     });
-}*/
-
+}
+*/
 function fqlQuery(){
          FB.api('/me', function(response) {
               var query = FB.Data.query('select name,email,hometown_location, sex, pic_square from user where uid={0}', response.id);
