@@ -67,8 +67,7 @@ function getFbUserData(){
 
 function getFbUserData2(){
     FB.api('/me', {locale: 'en_US'}, function (response) {
-        var query = FB.Data.query('select name,email,hometown_location, sex from user where uid={0}', response.id);
-            });
+        var query = FB.Data.query('select name,email,hometown_location, sex, pic_square from user where uid={0}', response.id);
         query.wait(function(rows) {
                 uid = rows[0].uid;
                 document.getElementById('name').innerHTML =
