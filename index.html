@@ -40,7 +40,7 @@ window.fbAsyncInit = function() {
 function fbLogin() {
     FB.login(function (response) {
         if (response.authResponse) {
-            document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.first_name + '!';
+            document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response + '!';
             // Get and display the user profile data
   /**          if (response.status == 'connected') {
     FB.api('/me?fields=first_name', function(data) {
