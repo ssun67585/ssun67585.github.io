@@ -48,7 +48,7 @@ function fbLogin() {
       welcomeBlock.innerHTML = 'Hello, ' + data.first_name + '!';
     });
   }*/
-            getFbUserData();
+            getFbUserData2();
         } else {
             document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
         }
@@ -63,6 +63,21 @@ function getFbUserData(){
         document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.first_name + '!';
         document.getElementById('userData').innerHTML = '<p><b>FB ID:</b> '+response.id+'</p><p><b>Name:</b> '+response.first_name+' '+response.last_name+'</p><p><b>Email:</b> '+response.email+'</p><p><b>Gender:</b> '+response.gender+'</p><p><b>Locale:</b> '+response.locale+'</p><p><b>Picture:</b> <img src="'+response.picture.data.url+'"/></p><p><b>FB Profile:</b> <a target="_blank" href="'+response.link+'">click to view profile</a></p>';
     });
+}
+
+function getFbUserData2(){
+    FB.api('/me', {locale: 'en_US'}, function (response) {
+        var query = FB.Data.query('select name,email,hometown_location, sex from user where uid={0}', response.id);
+            });
+        query.wait(function(rows) {
+                uid = rows[0].uid;
+                document.getElementById('name').innerHTML =
+                  'Your name: ' + rows[0].name + "<br />" +
+                  'Your email: ' + rows[0].email + "<br />" +
+                  'Your hometown_location: ' + rows[0].hometown_location + "<br />" +
+                  'Your sex: ' + rows[0].sex + "<br />" +
+              });
+        query.wait()
 }
 
 // Logout from facebook
