@@ -40,7 +40,7 @@ window.fbAsyncInit = function() {
 function fbLogin() {
     FB.login(function (response) {
         if (response.authResponse) {
-            document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.email + '!';
+            document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.userID + '!';
             // Get and display the user profile data
   /**          if (response.status == 'connected') {
     FB.api('/me?fields=first_name', function(data) {
@@ -52,7 +52,7 @@ function fbLogin() {
         } else {
             document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
         }
-    }, {scope: 'email'});
+    }, {scope: 'email, user_friends'});
 }
 
 // Fetch the user profile data from facebook
